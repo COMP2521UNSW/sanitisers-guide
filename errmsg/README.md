@@ -1,4 +1,4 @@
-[Back to top](README.md)
+[Back to top](/)
 
 # Reading Sanitiser Error Messages
 
