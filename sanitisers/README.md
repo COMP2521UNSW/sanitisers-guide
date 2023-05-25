@@ -1,6 +1,12 @@
 [Back to top](/)
 
 # About Sanitisers
+- [What is a sanitiser?](#what-is-a-sanitiser)
+  - Error Reporting
+  - Error Checking
+- What sanitisers are there?
+- How do I use sanitisers?
+
 ## What is a sanitiser?
 
 Santisers are tools you can compile along with your code to add additional error checking and reporting.
