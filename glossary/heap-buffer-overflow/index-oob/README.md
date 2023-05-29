@@ -1,4 +1,4 @@
-[Back to heap-buffer-overflow](/glossary/heap-buffer-overflow)
+[Back to heap-buffer-overflow](..)
 
 # Index Out of Bounds
 

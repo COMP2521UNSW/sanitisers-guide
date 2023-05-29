@@ -1,4 +1,4 @@
-[Back to top](/)
+[Back to top](..)
 
 # Glossary of Sanitiser Errors
 

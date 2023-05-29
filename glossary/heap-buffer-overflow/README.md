@@ -1,4 +1,4 @@
-[Back to glossary](/glossary)
+[Back to glossary](..)
 
 # heap-buffer-overflow
 
@@ -48,3 +48,6 @@ The second stack trace below the green line describes where (which line/function
 This might be useful if you want to double-check the line where you allocated the memory to make sure you're allocating sufficient memory.
 
 ## Examples
+
+- [Index Out of Bounds](index-oob)
+- [Insufficient Memory Allocation](insufficient-allocation)

@@ -1,4 +1,4 @@
-[Back to top](/)
+[Back to top](..)
 
 # About Sanitisers
 - [What is a sanitiser?](#what-is-a-sanitiser)
@@ -67,7 +67,10 @@ For example, to compile with AddressSanitizer and LeakSanitizer you would do som
 clang -o myProgram myProgram.c -fsanitize=address,leak
 ```
 
-Note that multiple sanitisers are chained together with commas. 
+As shown above, multiple sanitisers are chained together with commas. 
 
 **Note:** If you're working locally on a Mac you may not get an error when trying to compile with LeakSanitizer. Please follow [these steps](https://stackoverflow.com/a/55778432) to install it.
+
+**Note 2:**
+
 

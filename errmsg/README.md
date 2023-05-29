@@ -1,4 +1,4 @@
-[Back to top](/)
+[Back to top](..)
 
 # Reading Sanitiser Error Messages
 
@@ -10,7 +10,7 @@ Here are the different components of the error message:
 
 ### Error Type
 
-The red line at the top describes the type of error that occurred, in this case a `heap-buffer-overflow`. See the [glossary](/glossary) for what each error type means.
+The red line at the top describes the type of error that occurred, in this case a `heap-buffer-overflow`. See the [glossary](../glossary) for what each error type means.
 
 
 ### Stack Traces
@@ -32,7 +32,7 @@ From here we can see that:
 - `foo()` was called from `main()` in `prog1.c` at line 21
 - Some other things happen before `main()` is actually called
 
-An error may have additional stack traces, for a description of what they all represent see the glossary page for the error type.
+An error may have a number of different stack traces. For a description of what they all represent, see the [glossary](../glossary) page for the error type.
 
 
 ### Shadow Bytes
