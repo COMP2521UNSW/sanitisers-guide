@@ -11,7 +11,7 @@ Common causes include accessing an index out of bounds of a dynamically allocate
 
 This is a typical `heap-buffer-overflow` message:
 
-![img.png](index-oob/error.png)
+![img.png](index-oob-simple/error.png)
 
 Here is the useful information you can get from this error message:
 
@@ -49,5 +49,6 @@ This might be useful if you want to double-check the line where you allocated th
 
 ## Examples
 
+- [Index Out of Bounds (Simple)](index-oob-simple)
 - [Index Out of Bounds](index-oob)
 - [Insufficient Memory Allocation](insufficient-allocation)
