@@ -69,8 +69,6 @@ clang -o myProgram myProgram.c -fsanitize=address,leak
 
 As shown above, multiple sanitisers are chained together with commas. 
 
-**Note:** If you're working locally on a Mac you may not get an error when trying to compile with LeakSanitizer. Please follow [these steps](https://stackoverflow.com/a/55778432) to install it.
+**Note:** If you're working locally on a Mac you may get an error when trying to compile with LeakSanitizer as it is not installed by default. Please follow [these steps](https://stackoverflow.com/a/55778432) to install it.
 
-**Note 2:**
-
-
+**Note 2:** Some sanitisers are not compatible with each other. Specifically, MSan is incompatible with ASan and LSan, so to check for the entire range of errors you would need to compile once with ASan and LSan (and UBSan), and compile again with MSan.
