@@ -1,4 +1,0 @@
-baseurl             : "/sanitisers-guide" # does not include hostname
-
-kramdown:
-  syntax_highlighter: rouge
