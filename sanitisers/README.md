@@ -21,7 +21,7 @@ int main(void) {
 }
 ```
 
-If we compile and run this program sanitisers, you will get the following output, which is not very helpful:
+If we compile and run this program without sanitisers, you will get the following output, which is not very helpful:
 
 ![Segmentation fault](segfault.png)
 
@@ -41,7 +41,7 @@ int main(void) {
 }
 ```
 
-If we compile and run this program sanitisers, this will run without issues:
+If we compile and run this program without sanitisers, this will run without issues:
 
 ![Runs successfully and prints 0](invalid.png)
 
