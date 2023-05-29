@@ -33,7 +33,7 @@ However, with sanitisers included, we get the following much more helpful output
 
 Sanitisers can also reveal errors that may have gone unnoticed otherwise and help keep your code bug free. For example, consider this C program that accesses an array after it has been freed:
 
-```C
+```c
 int main(void) {
     int *a = malloc(sizeof(int) * 100);
     free(a);

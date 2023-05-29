@@ -6,7 +6,7 @@
 
 Here is the code for this example ([source](index-oob.c)):
 
-```C
+```c
 // Accesses array out of bounds
 // Created for COMP2521 sanitiser guide
 

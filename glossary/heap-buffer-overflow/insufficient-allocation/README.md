@@ -6,7 +6,7 @@
 
 Here is the code for this example ([source](insufficient-allocation.c)):
 
-```C
+```c
 // Allocate insufficient memory for a struct
 // Created for COMP2521 sanitiser guide
 
