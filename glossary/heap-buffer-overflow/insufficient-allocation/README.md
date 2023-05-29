@@ -1,6 +1,6 @@
 [Back to heap-buffer-overflow](..)
 
-# Insufficient Memory
+# Insufficient Memory for Struct
 
 ## The Code
 
@@ -38,7 +38,7 @@ Here is the error message:
 
 - The first thing we notice is that the error occurs on line 16, which is the line `n->next = NULL;`.
 - The memory being incorrectly accessed was allocated on line 14, which is `Node n = malloc(sizeof(Node));`.
-- The memory allocated for the node was only 8 bytes, however we would expect at least 12 bytes (see below), so we've probably not allocated enough memory.
+- The memory allocated for `n` was only 8 bytes.
 
 ## The Problem
 

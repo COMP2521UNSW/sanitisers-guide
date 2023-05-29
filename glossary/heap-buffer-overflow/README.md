@@ -49,6 +49,7 @@ This might be useful if you want to double-check the line where you allocated th
 
 ## Examples
 
-- [Index Out of Bounds (Simple)](index-oob-simple)
-- [Index Out of Bounds](index-oob)
-- [Insufficient Memory Allocation](insufficient-allocation)
+- [Index out of bounds (simple)](index-oob-simple)
+- [Index out of bounds](index-oob)
+- [Insufficient memory for struct](insufficient-allocation)
+- [Insufficient memory for array](insufficient-allocation-array)

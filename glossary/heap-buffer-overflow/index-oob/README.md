@@ -52,8 +52,8 @@ Here is the error message:
 
 For some reason, either `arr[i]` or `arr[i + 1]` is trying to access index 10. Since `i` loops until `i < size`, we know that `i` can be at most 9. So `arr[i]` will always be fine, but if `i = 9` then `arr[i + 1]` will access `arr[10]` which is out of bounds.
 
+At a higher level, remember the function considers each pair in the array (i.e. `arr[0]` and `arr[1]`, `arr[1]` and `arr[2]` etc). The loop counter `i` represents the index of the first item in the pair, but there is no pair starting at `size - 1`.
+
 ## The Fix
 
 We need to fix our loop condition so that `i < size - 1`. This makes sure that `i + 1 < size` so `arr[i + 1]` will not cause issues.
-
-At a higher level, remember the function considers each pair in the array (i.e. `arr[0]` and `arr[1]`, `arr[1]` and `arr[2]` etc). The loop counter `i` represents the index of the first item in the pair, but there is no pair starting at `size - 1` so we don't need to loop until there.
