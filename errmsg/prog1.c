@@ -8,16 +8,16 @@
 #define N 10
 
 void foo(void) {
-	char *s = malloc(N);
-	strcpy(s, "012345678");
-	for (int i = 0; i <= N; i++) {
-		printf("%c", s[i]);
-	}
-	printf("\n");
+    char *s = malloc(N);
+    strcpy(s, "012345678");
+    for (int i = 0; i <= N; i++) {
+        printf("%c", s[i]);
+    }
+    printf("\n");
 }
 
 int main(void) {
-	// Call foo
-	foo();
+    // Call foo
+    foo();
     return 0;
 }
