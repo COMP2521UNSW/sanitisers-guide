@@ -14,7 +14,7 @@ Santisers are tools you can compile along with your code to add additional error
 ### Error Reporting
 
 Their most important use is giving detailed error messages to aid debugging. Consider the following C program which dereferences a NULL pointer:
-```C
+```c
 int main(void) {
     int *ptr = NULL;
     printf("%d\n", *ptr);
