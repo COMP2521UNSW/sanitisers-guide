@@ -1,17 +1,15 @@
 // Allocate insufficient memory for a struct
 // Created for COMP2521 sanitiser guide
 
-#include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node *Node;
 struct node {
     int val;
-    Node next;
+    struct node *next;
 };
 
 int main(void) {
-    Node n = malloc(sizeof(Node));
+    struct node *n = malloc(sizeof(n));
     n->val = 0;
     n->next = NULL;
 
