@@ -40,11 +40,10 @@ An error may have a number of different stack traces. For a description of what 
 The large grid at the bottom is a map of the "shadow bytes" used by the sanitiser algorithm. In this course, you can usually ignore this. More information can be found [here](https://learn.microsoft.com/en-us/cpp/sanitizers/asan-shadow-bytes).
 
 ## Runtime Errors
-Another class of error output by sanitisers is a runtime error. These indicate something has gone wrong that may not necessarily have caused the program to crash
-.
+Another class of error output by sanitisers is a runtime error. These indicate something has gone wrong that may not necessarily have caused the program to crash. This means you may run into multiple runtime errors.
 
 Below is an example of such an error:
 
 ![runtime error message](runtime.png)
 
-These error messages are much easier to digest. The file/line number where the error occurred is shown in the same format as with the stack traces, followed by a clear description of the error.
+These are much easier to digest. The file/line number where the error occurred is shown in the same format as with the stack traces, followed by a clear description of the error.
