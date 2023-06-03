@@ -59,12 +59,12 @@ However, we know accessing memory after it has been freed is invalid, and our sa
 
 ## How do I use sanitisers?
 
-To compile your code with sanitizers, you need to the add `fsanitize` flag to your compilation command. Most of the Makefiles we provide already have this flag added for you.
+To compile your code with sanitizers, you need to the add `-fsanitize` flag to your compilation command. In order for line numbers to be displayed in the errors, you will also need the `-g` flag. Most of the Makefiles we provide already have these flag added for you.
 
 For example, to compile with AddressSanitizer and LeakSanitizer you would do something like
 
 ```
-clang -o myProgram myProgram.c -fsanitize=address,leak
+clang -g -fsanitize=address,leak -o myProgram myProgram.c
 ```
 
 As shown above, multiple sanitisers are chained together with commas. 
