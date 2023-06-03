@@ -24,7 +24,7 @@ This also gives some hints to the type of the memory you tried to access. For ex
 
 
 ### Error Location
-The first stack trace describes where (which line/function/file) the error occurred.
+The first stack trace describes where (which line/function/file) the error occurred. See [here](../../errmsg#stack-traces) for a guide on reading stack traces.
 
 ### Incorrectly Accessed Memory Details
 
@@ -43,7 +43,7 @@ The number of bytes left/right (`X`) can sometimes be helpful to quickly tell yo
 
 #### Allocation Location
 
-The second stack trace below the green line describes where (which line/function/file) the incorrectly accessed memory was initially allocated.
+The second stack trace below the green line describes where (which line/function/file) the incorrectly accessed memory was initially allocated. See [here](../../errmsg#stack-traces) for a guide on reading stack traces.
 
 This might be useful if you want to double-check the line where you allocated the memory to make sure you're allocating sufficient memory.
 
