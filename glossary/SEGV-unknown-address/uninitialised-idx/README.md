@@ -41,7 +41,7 @@ Here is the error message:
 
 A large negative number is usually a sign that we have an uninitialised value. In this case, when we allocated memory for the `printOrder` array we didn't initialise it.
 
-When we use one of these uninitialised values as an index to `array`, we try access a large negative index, or in other words a memory address 4 million bytes before the start of `array`. This address is unknown to AddressSanitizer, so we get this error.
+When we use one of these uninitialised values as an index to `array`, we try access a large negative index, or in other words a memory address 4 million bytes (-1094795586 * 4 byte integers) before the start of `array`. This address is unknown to AddressSanitizer, so we get this error.
 
 ## The Fix
 
