@@ -52,10 +52,11 @@ However, we know accessing memory after it has been freed is invalid, and our sa
 
 ## What sanitisers are there?
 
-* **AddressSanitizer** or **ASan** is for catching various memory errors such as accessing unallocated memory. A full list of checks can be found [here](https://clang.llvm.org/docs/AddressSanitizer.html#introduction). You can use it with `fsanitize=address`.
-* **LeakSanitizer** or **LSan** is for catching memory leaks. You can use it with `fsanitize=leak`.
-* **MemorySanitizer** or **MSan** is for detecting reads of uninitialised memory - that is, trying to read memory before it is written. You can use it with `fsanitize=memory`.
-* **UndefinedBehaviorSanitizer** or **UBSan** is for catching various kinds of undefined behavior such as dividing by zero. A full list of checks can be found [here](https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html#ubsan-checks). You can use it with `fsanitize=undefined`.
+* **AddressSanitizer** or **ASan** is for catching various memory errors such as accessing unallocated memory. A full list of checks can be found [here](https://clang.llvm.org/docs/AddressSanitizer.html#introduction). You can use it with `-fsanitize=address`.
+* **LeakSanitizer** or **LSan** is for catching memory leaks. You can use it with `-fsanitize=leak`.
+* **MemorySanitizer** or **MSan** is for detecting reads of uninitialised memory - that is, trying to read memory before it is written. You can use it with `-fsanitize=memory`.
+  * If you would like MSan to also output where the uninitialised memory originated, you can add the `-fsanitize-memory-track-origins` flag.
+* **UndefinedBehaviorSanitizer** or **UBSan** is for catching various kinds of undefined behavior such as dividing by zero. A full list of checks can be found [here](https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html#ubsan-checks). You can use it with `-fsanitize=undefined`.
 
 ## How do I use sanitisers?
 
