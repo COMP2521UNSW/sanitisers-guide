@@ -17,8 +17,9 @@ The red line at the top describes the type of error that occurred, in this case 
 
 The error message contains at least one stack trace describing where the error occurred. Recall that function calls in C form a 'function call stack'. A stack trace is then a representation of the function call stack that led to the error.  
 
-The format of each line in the stack trace is `... in func file:line:col`. This means something happened in the function `func()` which is in the file `file` at line `line` and column `col`.
-The first line tells you **where the error occurred**. Then, each of the lines below **which functions were called** and where leading up to the error.
+The format of each line in the stack trace is `... in func filename:line:col`. This means something happened at line `line` and column `col` of the file called `file`, which is within the function `func`.
+
+The top line tells you **where the error occurred**. Then, each of the lines below details **which functions were called** and where leading up to the error. Sometimes, the top line is a library function like `malloc()`, so you should look for the first line containing a function/file in your code.
 
 Let's take a close look at the first stack trace in the example above. You may want to check out the [code](prog1.c) that caused the error.
 ```
