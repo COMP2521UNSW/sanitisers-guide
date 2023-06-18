@@ -1,4 +1,4 @@
-[Back to SEGV on unknown address](..)
+[Back to use-of-uninitialized-value](..)
 
 # Uninitialised Pointer
 
@@ -32,17 +32,13 @@ Here is the error message:
 
 ![error message](error.png)
 
-- We have multiple runtime errors about trying to access address `0xbebebebebebebebe`
 - The hint tells us we tried to access a large address (likely uninitialised)
 - The error occurs on line 13 - `n->next->value = 1;`
-
-**Note**: This error is not super helpful, if we use MemorySanitizer we get a more informative error message which you can see [here](../../use-of-uninitialized-value/uninitialised-ptr).
+- The uninitialised value was originally created on line 11 - `struct node *n = malloc(sizeof(*n));`
 
 ## The Problem
 
-`0xbebebebebebebebe` is the value LeakSanitizer uses for uninitialised pointers. This means the pointer we are trying to access is uninitialised. This is further supported by the hint.
-
-On line 13, we try to set the value of `n->next`. However, when we allocated memory for `n` we never initialised `n->next`, so writing to it causes an error.
+On line 13, we try to set the value of `n->next`. However, when we allocated memory for `n` we never initialised `n->next`, so trying to write to this pointer causes an error.
 
 ## The Fix
 

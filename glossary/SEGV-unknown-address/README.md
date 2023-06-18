@@ -6,6 +6,8 @@ A `SEGV on unknown address` occurs when you try to access an unknown address (du
 
 The most common cause of this error is accessing a NULL pointer, as well as using uninitialised pointers or array indexes.
 
+**Note**: If you suspect the problem is an uninitialised value, it's a good idea to compile with `MemorySanitizer` instead of `AddressSanitizer` to get a much more helpful [use-of-uninitialized-value](../use-of-uninitialized-value) error. See how to switch [here](../../sanitisers#switching-between-sanitisers).
+
 ## Reading the error message
 
 This is a typical `SEGV on unknown address` message:

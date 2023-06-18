@@ -1,4 +1,4 @@
-[Back to SEGV on unknown address](..)
+[Back to use-of-uninitialized-value](..)
 
 # Uninitialised Index
 
@@ -34,16 +34,15 @@ Here is the error message:
 
 ![error message](error.png)
 
-- We got a runtime error telling us that we tried to access index `-1094795586`
 - The error occurs on line 13 - `printf("%d\n", array[printIdx]);`
-
-**Note**: This error is not super helpful, if we use MemorySanitizer we get a more informative error message which you can see [here](../../use-of-uninitialized-value/uninitialised-idx).
+- The uninitialised value was stored into a variable on line 12 - `int printIdx = printOrder[i];`
+- The uninitialised value was originally created on line 10 - `int *printOrder = malloc(N * sizeof(int));`
 
 ## The Problem
 
-A large negative number is usually a sign that we have an uninitialised value. In this case, when we allocated memory for the `printOrder` array we didn't initialise it.
+When we allocated memory for the `printOrder` array we didn't initialise it, so each element of this array contains an uninitialised value.
 
-When we use one of these uninitialised values as an index to `array`, we try access a large negative index, or in other words a memory address 4 million bytes (-1094795586 * 4 byte integers) before the start of `array`. This address is unknown to AddressSanitizer, so we get this error.
+We use one of these as an index in line 13 when we try to print, and so get an error.
 
 ## The Fix
 
