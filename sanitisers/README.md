@@ -6,6 +6,7 @@
   - [Error Checking](#error-checking)
 - [What sanitisers are there?](#what-sanitisers-are-there)
 - [How do I use sanitisers?](#how-do-i-use-sanitisers)
+  - [Switching between sanitisers](#switching-between-sanitisers)
 
 ## What is a sanitiser?
 
@@ -62,14 +63,42 @@ However, we know accessing memory after it has been freed is invalid, and our sa
 
 To compile your code with sanitizers, you need to the add `-fsanitize` flag to your compilation command. In order for line numbers to be displayed in the errors, you will also need the `-g` flag. Most of the Makefiles we provide already have these flag added for you.
 
-For example, to compile with AddressSanitizer and LeakSanitizer you would do something like
+For example, to compile with ASan, LSan and UBSan you would do something like
 
 ```
-clang -g -fsanitize=address,leak -o myProgram myProgram.c
+clang -g -fsanitize=address,leak,undefined -o myProgram myProgram.c
 ```
 
 As shown above, multiple sanitisers are chained together with commas. 
 
-**Note:** If you're working locally on a Mac you may get an error when trying to compile with LeakSanitizer as it is not installed by default. Please follow [these steps](https://stackoverflow.com/a/55778432) to install it.
+**Note:** If you're working locally on a Mac you may get an error when trying to compile with LeakSanitizer as it is not installed by default. Please follow [these steps](https://stackoverflow.com/a/55778432) to install it. There is no way to use MemorySanitizer on Mac.
 
-**Note 2:** Some sanitisers are not compatible with each other. Specifically, MSan is incompatible with ASan and LSan, so to check for the entire range of errors you would need to compile once with ASan and LSan (and UBSan), and compile again with MSan.
+### Switching between sanitisers
+
+Some sanitisers are not compatible with each other. Specifically, MSan is incompatible with ASan and LSan, so to check for the entire range of errors you would need to compile once with ASan and LSan (and UBSan), and compile again with MSan. You might also want to switch to MSan to get more helpful errors in some cases.
+
+To switch between sanitisers, you will need to edit the Makefile and then recompile from scratch by running `make clean` and then `make`.
+
+If the provided Makefile has a line like this
+```makefile
+CFLAGS = -Wall -Werror -g -fsanitize=address,leak,undefined
+```
+then it currently uses ASan and LSan. To switch to MSan, change it to
+```makefile
+CFLAGS = -Wall -Werror -g -fsanitize=memory,undefined -fsanitize-memory-track-origins
+```
+and change it back to the original if you want to switch back.
+
+Some Makefiles might already have predefined options you can use, like so:
+```makefile
+CC = clang
+CFLAGS0 = -Wall -Werror -g
+CFLAGS1 = -Wall -Werror -g -fsanitize=address,leak,undefined
+CFLAGS2 = -Wall -Werror -g -fsanitize=memory,undefined
+
+CFLAGS = $(CFLAGS1)
+```
+You can edit the bottom line as needed to switch between different sanitisers. Currently, it uses `CFLAGS1` which has ASan and LSan, but you can switch to `CFLAGS2` to use MSan:
+```makefile
+CFLAGS = $(CFLAGS2)
+```
