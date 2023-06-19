@@ -59,11 +59,13 @@ Here is the error message when we gave an input of "1 2 3":
 
 ## The Problem
 
-While we allocate an array large enough
+While we do allocate an array large enough to store the maximum possible number of inputs, the actual number of inputs stored in to the array depends on user input. The rest of the array that is unused contains uninitialised values.
+
+In our main function, we don't know how many inputs were actually read. When we iterate through the array, we iterate through it fully since we don't know where to stop. This means that we eventually run into the unused/uninitialised section and get an error.
 
 ## The Fix
 
-This is a common pattern, where we create a large array to store the maximum possible items, but only store a smaller number of items. There are two main approaches to this.
+This is a common pattern, where we create a large array to store the maximum possible items, but actually store a smaller number of items depending on input. There are two main approaches to handling this.
 
 One is to have `readInput()` return the size, and take in a `malloc()`'d array to populate as an argument. We then use the returned size when we want to iterate through the inputs. Here's the above code rewritten with this approach ([source](fix1.c)):
 ```c
