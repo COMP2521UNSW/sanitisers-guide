@@ -37,7 +37,7 @@ Here is the error message:
 - We got a runtime error telling us that we tried to access index `-1094795586`
 - The error occurs on line 13 - `printf("%d\n", array[printIdx]);`
 
-**Note**: This error is not super helpful, if we use MemorySanitizer we get a more informative error message which you can see [here](../../use-of-uninitialized-value/uninitialised-idx).
+**Note**: This error is not super helpful, if we [switch to MemorySanitizer](../../../sanitisers#switching-between-sanitisers) we get a more informative error message which you can see [here](../../use-of-uninitialized-value/uninitialised-idx).
 
 ## The Problem
 

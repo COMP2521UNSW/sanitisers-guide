@@ -42,7 +42,7 @@ Here is the error message:
 
 When we allocated memory for the `printOrder` array we didn't initialise it, so each element of this array contains an uninitialised value.
 
-We use one of these as an index in line 13 when we try to print, and so get an error.
+We stored one of these values into `printIdx` in line 12 which we then use in line 13 when we try to print, and so get an error.
 
 ## The Fix
 

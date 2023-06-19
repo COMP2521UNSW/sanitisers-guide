@@ -34,3 +34,4 @@ There may be one or more stack traces that track each place (line/function/file)
 
 - [Uninitialised pointer](uninitialised-ptr)
 - [Uninitialised index](uninitialised-idx)
+- [Accessing Unused Array Elements](unused-elements)

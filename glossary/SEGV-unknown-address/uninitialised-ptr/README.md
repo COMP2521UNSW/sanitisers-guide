@@ -36,13 +36,13 @@ Here is the error message:
 - The hint tells us we tried to access a large address (likely uninitialised)
 - The error occurs on line 13 - `n->next->value = 1;`
 
-**Note**: This error is not super helpful, if we use MemorySanitizer we get a more informative error message which you can see [here](../../use-of-uninitialized-value/uninitialised-ptr).
+**Note**: This error is not super helpful, if we [switch to MemorySanitizer](../../../sanitisers#switching-between-sanitisers) we get a more informative error message which you can see [here](../../use-of-uninitialized-value/uninitialised-ptr).
 
 ## The Problem
 
 `0xbebebebebebebebe` is the value LeakSanitizer uses for uninitialised pointers. This means the pointer we are trying to access is uninitialised. This is further supported by the hint.
 
-On line 13, we try to set the value of `n->next`. However, when we allocated memory for `n` we never initialised `n->next`, so writing to it causes an error.
+On line 13, we try to set the `value` field of `n->next`. However, when we allocated memory for `n` we never initialised `n->next`, so writing to it causes an error.
 
 ## The Fix
 

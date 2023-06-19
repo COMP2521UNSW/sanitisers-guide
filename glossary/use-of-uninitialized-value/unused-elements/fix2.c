@@ -5,13 +5,14 @@
 
 #define MAX_INPUTS 10
 
-int *readInput(void);
+int *readInput(int *countPtr);
 
 int main(void) {
-    int *inputs = readInput();
+    int numInputs;
+    int *inputs = readInput(&numInputs);
 
     int evens = 0;
-    for (int i = 0; i < MAX_INPUTS; i++) {
+    for (int i = 0; i < numInputs; i++) {
         if (inputs[i] % 2 == 0) {
             evens++;
         }
@@ -21,14 +22,14 @@ int main(void) {
     free(inputs);
 }
 
-int *readInput(void) {
+int *readInput(int *countPtr) {
     int *inputs = malloc(MAX_INPUTS * sizeof(int));
 
     // Read until MAX_INPUTS read or EOF
     int input;
-    int count = 0;
-    while (count < MAX_INPUTS && scanf("%d", &input) != EOF) {
-        inputs[count++] = input;
+    *count = 0;
+    while (*count < MAX_INPUTS && scanf("%d", &input) != EOF) {
+        inputs[(*count)++] = input;
     }
 
     return inputs;

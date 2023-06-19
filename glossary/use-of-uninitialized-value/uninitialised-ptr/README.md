@@ -32,13 +32,12 @@ Here is the error message:
 
 ![error message](error.png)
 
-- The hint tells us we tried to access a large address (likely uninitialised)
 - The error occurs on line 13 - `n->next->value = 1;`
 - The uninitialised value was originally created on line 11 - `struct node *n = malloc(sizeof(*n));`
 
 ## The Problem
 
-On line 13, we try to set the value of `n->next`. However, when we allocated memory for `n` we never initialised `n->next`, so trying to write to this pointer causes an error.
+On line 13, we try to set the `value` field of `n->next`. However, when we allocated memory for `n` we never initialised `n->next`, so trying to write to this pointer causes an error.
 
 ## The Fix
 
