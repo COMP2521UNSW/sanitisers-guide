@@ -1,6 +1,6 @@
-[Back to use-of-uninitialized-value](..)
+[Back to heap-use-after-free](..)
 
-# Uninitialised Pointer
+# Dangling Pointer
 
 ## The Code
 

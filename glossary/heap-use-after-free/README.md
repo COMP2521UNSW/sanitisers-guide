@@ -32,7 +32,6 @@ The third stack trace below `previously allocated by...` describes where (which 
 ## Examples
 
 - Freeing returned memory
-- Dangling pointer
-- False copy (list copy)
-- Cycles (linked list)
-- Cycles (binary search tree)
+- [Dangling pointer](dangling-pointer)
+- False copy
+- BST cycle
