@@ -33,4 +33,4 @@ The third stack trace below `previously allocated by...` describes where (which 
 
 - [Dangling pointer](dangling-pointer)
 - [False copy](false-copy)
-- BST cycle
+- [BST cycle](bst-cycle)
