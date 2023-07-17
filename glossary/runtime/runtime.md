@@ -19,12 +19,23 @@ If you try access an address that is not aligned correctly, then the sanitiser k
 
 ![misaligned address error](misaligned.png)
 
+There are three types of misaligned address errors you'll get:
+- `store to` means you've tried to write something to the memory address
+- `load from` means you've tried to read the data at the memory address
+- `means access within` means the pointer was to a struct, and you've tried to access one of its fields using `->`
+
 Typically, this error comes along with a [SEGV on unknown address](../SEGV-unknown-address) error, so see the explanations and examples there for more information on debugging.
 
 **Note**: If the address in the error message is `0xbebebebebebebebe` then this is definitely an uninitialised pointer, since this is the default value used for uninitialised values. See an example [here](../SEGV-unknown-address/uninitialised-ptr).
 
 ## null pointer
 Hopefully this error is pretty straightforward - it occurs when you try to access a NULL pointer. Below is an example:
+
 ![null pointer error](null.png)
+
+There are three types of null pointer errors you'll get:
+- `store to` means you've tried to write something to the memory address
+- `load from` means you've tried to read the data at the memory address
+- `means access within` means the pointer was to a struct, and you've tried to access one of its fields using `->`
 
 Typically, this error comes along with a [SEGV on unknown address](../SEGV-unknown-address) error, so see the explanations and examples there for more information on debugging. A specific example can be found [here](../SEGV-unknown-address/nullptr).
