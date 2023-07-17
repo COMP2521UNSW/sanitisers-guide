@@ -49,6 +49,6 @@ Another class of error output by sanitisers is a runtime error. These indicate s
 
 Below is an example of such an error:
 
-![runtime error message](runtime.png)
+![runtime error message](../glossary/runtime/index.png)
 
 These are much easier to digest. The file/line number where the error occurred is shown in the same format as with the stack traces, followed by a clear description of the error.
