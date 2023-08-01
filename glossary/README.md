@@ -13,6 +13,7 @@ Click the links below to find out what each error means and how you can debug it
 - [load of misaligned address](runtime#misaligned-address)
 - [load of null pointer](runtime#null-pointer)
 - [SEGV on unknown address](SEGV-unknown-address)
+- [signed integer overflow](runtime#integer-overflow)
 - stack-overflow
 - stack-buffer-overflow
 - [store to misaligned address](runtime#misaligned-address)

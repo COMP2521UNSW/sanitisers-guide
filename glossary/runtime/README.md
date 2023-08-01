@@ -11,6 +11,16 @@ Typically, this error comes along with a [SEGV on unknown address](../SEGV-unkno
 
 **Note**: If the index in the error message is `-1094795586` then this is definitely an uninitialised value, since this is the default value used for uninitialised values. See an example [here](../SEGV-unknown-address/uninitialised-idx).
 
+## integer overflow
+Due to how integers are represented and stored as a fixed width binary number, the numbers that can be represented as an integer is limited to some range. For example, the `int` type in C is a 32-bit signed integer, so all `int` values must be in the range [-2147483648, 2147483647] (which is [-(2^31), 2^31 - 1]).
+
+If you tried to do store an integer outside of this range directly e.g. `int x = 2147483648;`, your compiler will probably warn you about this. However, if over the course of the program some calculation results in a value outside this range, you will get an error like the one below:
+
+![integer overflow error](overflow.png)
+
+This can sometimes happen if you are using `INT_MAX` or `INT_MIN` to represent infinity or negative infinity. Be careful that you aren't doing arithmetic with these values that would produce a result outside of the representable range, such as adding to `INT_MAX` or subtracting from `INT_MIN`.
+
+**Note**: If one of the numbers in the calculation is `-1094795586` then this is definitely an uninitialised value, since this is the default value used for uninitialised values.
 
 ## misaligned address
 For efficiency reasons, the compiler will align data along certain boundaries. This means that data will always be stored at addresses that are a multiple of this boundary. For example, in the screenshot above we can see that `int` requires 4-byte alignment, so the memory address of an `int` should always be a multiple of 4.
