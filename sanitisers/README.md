@@ -10,7 +10,7 @@
 
 ## What is a sanitiser?
 
-Santisers are tools you can compile along with your code to add additional error checking and reporting.
+Sanitisers are tools you can compile along with your code to add additional error checking and reporting.
 
 ### Error Reporting
 
@@ -94,8 +94,7 @@ Some Makefiles might already have predefined options you can use, like so:
 CC = clang
 CFLAGS0 = -Wall -Werror -g
 CFLAGS1 = -Wall -Werror -g -fsanitize=address,leak,undefined
-CFLAGS2 = -Wall -Werror -g -fsanitize=memory,undefined
-
+CFLAGS2 = -Wall -Werror -g -fsanitize=memory,undefined -fsanitize-memory-track-origins
 CFLAGS = $(CFLAGS1)
 ```
 You can edit the bottom line as needed to switch between different sanitisers. Currently, it uses `CFLAGS1` which has ASan and LSan, but you can switch to `CFLAGS2` to use MSan:
