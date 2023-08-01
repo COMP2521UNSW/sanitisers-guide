@@ -12,13 +12,14 @@ Here is the code for this example ([source](insufficient-allocation.c)):
 
 #include <stdlib.h>
 
+typedef struct node *Node;
 struct node {
     int val;
-    struct node *next;
+    Node next;
 };
 
 int main(void) {
-    struct node *n = malloc(sizeof(n));
+    Node n = malloc(sizeof(Node));
     n->val = 0;
     n->next = NULL;
     
@@ -34,13 +35,13 @@ Here is the error message:
 
 ![error message](error.png)
 
-- The first thing we notice is that the error occurs on line 14, which is the line `n->next = NULL;`.
-- The memory being incorrectly accessed was allocated on line 12, which is `struct node *n = malloc(sizeof(n));`.
+- The first thing we notice is that the error occurs on line 15, which is the line `n->next = NULL;`.
+- The memory being incorrectly accessed was allocated on line 13, which is `Node n = malloc(sizeof(Node));`.
 - The memory allocated to `n` was only 8 bytes.
 
 ## The Problem
 
-Here we've defined a linked list node struct `struct node`. In the main function, we've allocated memory for a new node, however we only allocated `sizeof(n)` bytes. But `n` is of type `struct node *`, so this is equivalent to `sizeof(struct node *)`. All pointers are 8 bytes in size.
+Here we've defined a linked list node struct `struct node`, and typedef'd a pointer to it as `Node`. In the main function, we've allocated memory for a new node, however we only allocated `sizeof(Node)` bytes. But `Node` is the same as `struct node *`, so this is equivalent to `sizeof(struct node *)`, and all pointers are 8 bytes in size.
 
 In this case our struct contains an integer (4 bytes) and a pointer to the next node (8 bytes), so we would need 12 bytes of memory for this struct. But since we only allocate enough space for a pointer (8 bytes), we haven't allocated enough memory.
 

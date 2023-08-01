@@ -3,13 +3,14 @@
 
 #include <stdlib.h>
 
+typedef struct node *Node;
 struct node {
     int val;
-    struct node *next;
+    Node next;
 };
 
 int main(void) {
-    struct node *n = malloc(sizeof(n));
+    Node n = malloc(sizeof(Node));
     n->val = 0;
     n->next = NULL;
 
