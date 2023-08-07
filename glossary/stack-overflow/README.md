@@ -17,6 +17,14 @@ The first stack trace describes where (which line/function/file) the error occur
 
 This will tell you which function is stuck in the infinite recursion, and also how you got there, but unfortunately there isn't much to help determine the cause here.
 
+## Using GDB
+
+Often the stack trace only shows the last couple hundred stack frames, so it's not possible to tell what initially triggered the infinite recursion with just the sanitiser error.
+
+We can use GDB to give us the full trace though. Load the program into GDB (`gdb <program>`), run it (`run <args>`) until it hits the error, and then generate a stack trace with the `where` command. You should get a very long output with thousands of frames, but eventually it'll give you the first call:
+
+![gdb trace](bst-cycle/gdb.png)
+
 ## Examples
 
 - [Self-recursion](recurse-self)
