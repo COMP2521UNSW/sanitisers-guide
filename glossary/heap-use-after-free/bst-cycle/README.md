@@ -98,14 +98,14 @@ Here is the error message:
 ![error message](error.png)
 
 - The first stack trace tells us:
-    - The error occurs on line 65 inside `bstFree()` - this line is `if (l->head == NULL) {`
+    - The error occurs on line 66 inside `bstFree()` - this line is `if (l->head == NULL) {`
     - This happened 5 levels of recursion deep
-    - `bstFree()` was initially called from line 39 of `main()`
+    - `bstFree()` was initially called from line 40 of `main()`
 - The second stack trace tells us:
-    - The memory was freed in line 67 inside `bstFree()`
-    - This also happened when we called `bstFree()`on line 39 of `main()`
+    - The memory was freed in line 68 inside `bstFree()`
+    - This also happened when we called `bstFree()`on line 40 of `main()`
 - The final stack trace tells us:
-    - The freed memory was first allocated when we called `bstInsert()` line 26 of `main()` - this is when we inserted 1
+    - The freed memory was first allocated when we called `bstInsert()` line 27 of `main()` - this is when we inserted 1
 
 ## The Problem
 

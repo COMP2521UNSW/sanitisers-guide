@@ -63,7 +63,6 @@ BST *newNode(int value) {
 
 void bstFree(BST *t) {
     if (t != NULL) {
-        printf("Freeing %d\n", t->value);
         bstFree(t->left);
         bstFree(t->right);
         free(t);
