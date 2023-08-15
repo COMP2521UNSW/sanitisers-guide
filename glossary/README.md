@@ -4,7 +4,7 @@
 
 Click the links below to find out what each error means and how you can debug it:
 
-- attempted double-free
+- [attempted double-free](double-free)
 - [access within misaligned address](runtime#misaligned-address)
 - [access within null pointer](runtime#null-pointer)
 - [heap-buffer-overflow](heap-buffer-overflow)
