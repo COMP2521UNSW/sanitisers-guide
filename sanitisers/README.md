@@ -36,7 +36,7 @@ Sanitisers can also reveal errors that may have gone unnoticed otherwise and hel
 
 ```c
 int main(void) {
-    int *a = malloc(sizeof(int) * 100);
+    int *a = calloc(100, sizeof(int));
     free(a);
     printf("%d\n", a[5]);
 }
@@ -50,6 +50,9 @@ However, we know accessing memory after it has been freed is invalid, and our sa
 
 ![img.png](sanerr2.png)
 
+Now, a keen eye might notice that running `./prog2` without sanitisers does exactly what we would expect it to do. We allocate an array of zeroes with `calloc()`, then printed an element of this array, which output a 0 - so what's the problem?
+
+Well, what happens when you access freed memory is **undefined behaviour**. Sometimes doing so will work (like it does here), and other times it won't (depending on factors such as the state of the program, the compiler used, the operating system run on etc.). Ideally, we want our program to run correctly *every* time, so we want to avoid doing things that result in undefined behaviour. This is why the sanitisers throw errors when you try to do so.
 
 ## What sanitisers are there?
 
