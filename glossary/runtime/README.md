@@ -32,7 +32,7 @@ If you try access an address that is not aligned correctly, then the sanitiser k
 There are three types of misaligned address errors you'll get:
 - `store to` means you've tried to write something to the memory address
 - `load from` means you've tried to read the data at the memory address
-- `means access within` means the pointer was to a struct, and you've tried to access one of its fields using `->`
+- `member access within` means the pointer was to a struct, and you've tried to access one of its fields using `->`
 
 Typically, this error comes along with a [SEGV on unknown address](../SEGV-unknown-address) error, so see the explanations and examples there for more information on debugging.
 
@@ -46,6 +46,6 @@ Hopefully this error is pretty straightforward - it occurs when you try to acces
 There are three types of null pointer errors you'll get:
 - `store to` means you've tried to write something to the memory address
 - `load from` means you've tried to read the data at the memory address
-- `means access within` means the pointer was to a struct, and you've tried to access one of its fields using `->`
+- `member access within` means the pointer was to a struct, and you've tried to access one of its fields using `->`
 
 Typically, this error comes along with a [SEGV on unknown address](../SEGV-unknown-address) error, so see the explanations and examples there for more information on debugging. A specific example can be found [here](../SEGV-unknown-address/nullptr).
