@@ -7,6 +7,7 @@ Click the links below to find out what each error means and how you can debug it
 - [attempted double-free](double-free)
 - [access within misaligned address](runtime#misaligned-address)
 - [access within null pointer](runtime#null-pointer)
+- [dynamic-stack-buffer-overflow](dynamic-stack-buffer-overflow)
 - [heap-buffer-overflow](heap-buffer-overflow)
 - [heap-use-after-free](heap-use-after-free)
 - [index out of bounds](runtime#index-out-of-bounds)
