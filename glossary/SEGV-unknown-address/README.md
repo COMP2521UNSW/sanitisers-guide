@@ -29,8 +29,11 @@ Sometimes the error message will contain a hint about what caused the error. The
 ### Error Location
 The stack trace describes where (which line/function/file) the error occurred.
 
+If the stack trace contains `__asan::Allocator::Deallocate` then this most likely means you have tried to free memory that was not allocated. See an example [here](not-allocated).
+
 ## Examples
 
 - [NULL pointer dereference](nullptr)
 - [Uninitialised pointer](uninitialised-ptr)
 - [Uninitialised index](uninitialised-idx)
+- [Freeing string literal](not-allocated)
