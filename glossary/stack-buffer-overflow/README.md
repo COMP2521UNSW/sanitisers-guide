@@ -27,15 +27,19 @@ This also gives some hints to the type of the memory you tried to access. For ex
 ### Error Location
 The first stack trace describes where (which line/function/file) the error occurred. See [here](../../errmsg#stack-traces) for a guide on reading stack traces.
 
+### Accessed Address Allocation Location
+
+The line under `Address 0x... is located in stack ... in frame` tells us which function created the variable that is being incorrectly accessed. This function will correspond to one of the frames in the stack trace above (the line number will not match).
+
 ### Accessed Address Location
 
-The error messages shows the variables that are contained in the stack frame of the function that contains the variable we tried to access. It also gives the range of addresses occupied by each variable (given as offsets from the base address of the frame) and which line it was created on.
+Under `this frame has N objects`, it lists the variables that are contained in the stack frame of the function that contains the variable we tried to access. It also gives the range of addresses occupied by each variable (given as offsets from the base address of the frame) and which line it was created on.
 
 Note that some variables may be missing. This is because the compiler may have optimised out those variables. For example, variables that are only used once or variables with constant values are inlined.
 
 The error message also tells you where the address you tried to access is in relation to these variables, which is the green text saying
 ```
-<= Memory access at offset N overflows/underflows this variable
+<= Memory access at offset X overflows/underflows this variable
 ```
 If the variable is an array, then how far the offset is from the array can give you a hint of what index you tried to use.
 

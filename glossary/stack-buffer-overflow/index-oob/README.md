@@ -1,6 +1,6 @@
 [Back to stack-buffer-overflow](..)
 
-# Index Out of Bounds (overflow)
+# Index Out of Bounds (Overflow)
 
 ## The Code
 
