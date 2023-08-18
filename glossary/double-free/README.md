@@ -29,4 +29,4 @@ The third stack trace below `previously allocated by...` describes where (which 
 ## Examples
 
 - [Simple](simple)
-- Parallel data structures
+- [Parallel data structures](parallel)
