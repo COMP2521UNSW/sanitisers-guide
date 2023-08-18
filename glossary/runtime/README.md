@@ -23,7 +23,7 @@ This can sometimes happen if you are using `INT_MAX` or `INT_MIN` to represent i
 **Note**: If one of the numbers in the calculation is `-1094795586` then this is definitely an uninitialised value, since this is the default value used for uninitialised values. See an example [here](../SEGV-unknown-address/uninitialised-idx).
 
 ## misaligned address
-For efficiency reasons, the compiler will align data along certain boundaries. This means that data will always be stored at addresses that are a multiple of this boundary. For example, in the screenshot above we can see that `int` requires 4-byte alignment, so the memory address of an `int` should always be a multiple of 4.
+For efficiency reasons, the compiler will align data along certain boundaries. This means that data will always be stored at addresses that are a multiple of this boundary. For example, in the screenshot below we can see that `int` requires 4-byte alignment, so the memory address of an `int` should always be a multiple of 4.
 
 If you try access an address that is not aligned correctly, then the sanitiser knows that this must be an invalid address, so it raises an error like the one below:
 
