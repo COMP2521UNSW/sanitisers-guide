@@ -92,7 +92,7 @@ clang ... -fsanitize=memory,undefined -fsanitize-memory-track-origins ...
 ```
 and change it back to the original if you want to switch back.
 
-Some Makefiles might already have predefined options you can use, which look like this:
+Most Makefiles provided in the course will already have predefined options you can use, which look like this:
 ```makefile
 ########################################################################
 
@@ -112,3 +112,5 @@ To use these, you can use either
 - `make nosan` to compile with no sanitisers
 
 Make sure to run `make clean` before switching to another sanitiser, otherwise the program(s) will not be recompiled.
+
+A full example Makefile can be found [here](./make).
