@@ -6,7 +6,7 @@ An `heap-use-after-free` occurs when you try to access memory that has already b
 
 ## Reading the error message
 
-This is a typical `heap-use-double-free` message:
+This is a typical `heap-use-after-free` message:
 
 ![img.png](error.png)
 
