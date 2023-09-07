@@ -72,7 +72,7 @@ For example, to compile with ASan, LSan and UBSan you would do something like
 clang -g -fsanitize=address,leak,undefined -o myProgram myProgram.c
 ```
 
-As shown above, multiple sanitisers are chained together with commas. 
+As shown above, multiple sanitisers are chained together with commas.
 
 **Note:** If you're working locally on a Mac you may get an error when trying to compile with LeakSanitizer as it is not installed by default. Please follow [these steps](https://stackoverflow.com/a/55778432) to install it. There is no way to use MemorySanitizer on Mac.
 
@@ -80,27 +80,35 @@ As shown above, multiple sanitisers are chained together with commas.
 
 Some sanitisers are not compatible with each other. Specifically, MSan is incompatible with ASan and LSan, so to check for the entire range of errors you would need to compile once with ASan and LSan (and UBSan), and compile again with MSan. You might also want to switch to MSan to get more helpful errors in some cases.
 
-To switch between sanitisers, you will need to edit the Makefile and then recompile from scratch by running `make clean` and then `make`.
+To switch between sanitisers, you will need to change which sanitisers are used in the compilation command.
 
-If the provided Makefile has a line like this
-```makefile
-CFLAGS = -Wall -Werror -g -fsanitize=address,leak,undefined
+For example,
 ```
-then it currently uses ASan and LSan. To switch to MSan, change it to
-```makefile
-CFLAGS = -Wall -Werror -g -fsanitize=memory,undefined -fsanitize-memory-track-origins
+clang ... -fsanitize=address,leak,undefined ...
+```
+currently uses ASan and LSan. To switch to MSan, change it to
+```
+clang ... -fsanitize=memory,undefined -fsanitize-memory-track-origins ...
 ```
 and change it back to the original if you want to switch back.
 
-Some Makefiles might already have predefined options you can use, like so:
+Some Makefiles might already have predefined options you can use, which look like this:
 ```makefile
-CC = clang
-CFLAGS0 = -Wall -Werror -g
-CFLAGS1 = -Wall -Werror -g -fsanitize=address,leak,undefined
-CFLAGS2 = -Wall -Werror -g -fsanitize=memory,undefined -fsanitize-memory-track-origins
-CFLAGS = $(CFLAGS1)
+########################################################################
+
+asan: CFLAGS += -fsanitize=address,leak,undefined
+asan: all
+
+msan: CFLAGS += -fsanitize=memory,undefined -fsanitize-memory-track-origins
+msan: all
+
+nosan: all
+
+########################################################################
 ```
-You can edit the bottom line as needed to switch between different sanitisers. Currently, it uses `CFLAGS1` which has ASan and LSan, but you can switch to `CFLAGS2` to use MSan:
-```makefile
-CFLAGS = $(CFLAGS2)
-```
+To use these, you can use either
+- `make asan` to compile with ASan, LSan and UBSan (this is also the default if you just write `make`)
+- `make msan` to compile with MSan and UBSan
+- `make nosan` to compile with no sanitisers
+
+Make sure to run `make clean` before switching to another sanitiser, otherwise the program(s) will not be recompiled.
