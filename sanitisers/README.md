@@ -113,4 +113,4 @@ To use these, you can use either
 
 Make sure to run `make clean` before switching to another sanitiser, otherwise the program(s) will not be recompiled.
 
-A full example Makefile can be found [here](./make).
+A full example Makefile can be found [here](https://github.com/COMP2521UNSW/sanitisers-guide/tree/main/sanitisers/make).
