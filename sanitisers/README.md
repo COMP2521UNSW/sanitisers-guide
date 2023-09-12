@@ -6,6 +6,7 @@
   - [Error Checking](#error-checking)
 - [What sanitisers are there?](#what-sanitisers-are-there)
 - [How do I use sanitisers?](#how-do-i-use-sanitisers)
+  - [MacOS Setup](#macos-setup) 
   - [Switching between sanitisers](#switching-between-sanitisers)
 
 ## What is a sanitiser?
@@ -74,7 +75,32 @@ clang -g -fsanitize=address,leak,undefined -o myProgram myProgram.c
 
 As shown above, multiple sanitisers are chained together with commas.
 
-**Note:** If you're working locally on a Mac you may get an error when trying to compile with LeakSanitizer as it is not installed by default. Please follow [these steps](https://stackoverflow.com/a/55778432) to install it. There is no way to use MemorySanitizer on Mac.
+### MacOS Setup
+
+If you're working locally on a Mac you may get an error when trying to compile with LeakSanitizer as it is not installed by default. Please follow the following steps to install it (inspired by [this SO answer](https://stackoverflow.com/a/55778432)).
+
+You can manually install LLVM using [Homebrew](https://brew.sh/) (which you should set up if you haven't already). The command to do this is:
+
+```
+brew install llvm
+```
+
+Now, when you run `which clang` it should now say `/.../llvm/bin/clang` (where `...` may be various paths) instead of `/usr/bin/clang`. If so, you should now be good to use LSan.
+
+If not, you may need to explicitly prioritise the newly installed LLVM in your path. The Homebrew installation process should have output something like:
+```
+If you need to have llvm first in your PATH, run:
+  echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
+```
+
+Run the command that it specifies, and then run:
+```
+source ~/.zshrc
+```
+
+Now, `which clang` should output the correct LLVM clang, and compiling with LSan should work.
+
+**Note**: There is no way to use MemorySanitizer on Mac.
 
 ### Switching between sanitisers
 
