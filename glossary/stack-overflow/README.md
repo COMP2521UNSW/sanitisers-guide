@@ -4,7 +4,7 @@
 
 Everybody's favourite. A `stack-overflow` occurs when you recurse too deep. This may be due to infinite recursion, or trying to recurse on an input size that is simply too large (e.g. recursing millions of times to mergesort an array with millions of elements).
 
-Every time a function is called, it gets pushed on to the "function call stack" and gets popped from the stack when it returns. The stack is only so large though, and if you're continuously call functions (push to the stack) without returning, you overflow the stack.
+Every time a function is called, it gets pushed on to the "function call stack" and gets popped from the stack when it returns. The stack is only so large though, and if you're continuously calling functions (pushing to the stack) without returning, you overflow the stack.
 
 ## Reading the error message
 
