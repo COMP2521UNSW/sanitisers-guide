@@ -57,7 +57,7 @@ Well, what happens when you access freed memory is **undefined behaviour**. Some
 
 ## What sanitisers are there?
 
-* **AddressSanitizer** or **ASan** is for catching various memory errors such as accessing unallocated memory. A full list of checks can be found [here](https://clang.llvm.org/docs/AddressSanitizer.html#introduction). You can use it with `-fsanitize=address`.
+* **AddressSanitizer** or **ASan** is for catching various memory errors relating to accessing invalid memory addresses. A full list of checks can be found [here](https://clang.llvm.org/docs/AddressSanitizer.html#introduction). You can use it with `-fsanitize=address`.
 * **LeakSanitizer** or **LSan** is for catching memory leaks. You can use it with `-fsanitize=leak`.
 * **MemorySanitizer** or **MSan** is for detecting reads of uninitialised memory - that is, trying to read memory before it is written. You can use it with `-fsanitize=memory`.
   * If you would like MSan to also output where the uninitialised memory originated, you can add the `-fsanitize-memory-track-origins` flag.
