@@ -27,6 +27,10 @@ The other stack traces tell you where the uninitialised value originated.
 #### Created by...
 This stack trace shows where (which line/function/file) the memory/variable was initially created.
 
+If this line says `created by  a heap allocation`, then the stack trace points to a specific heap memory allocation (i.e. a call to `malloc()` or `calloc()`) that was never initialised.
+
+If this lines says `created by an allocation of 'var' in the stack frame of function 'func'`, then the stack trace will only point to the line that the function `func` is on. However, this simply means that some local variable `var` inside of the function `func` was not initialised.
+
 #### Stored to memory at...
 There may be one or more stack traces that track each place (line/function/file) the uninitialised value was stored into a variable before it was finally used.
 
