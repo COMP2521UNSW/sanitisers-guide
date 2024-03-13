@@ -125,6 +125,15 @@ We also know that the freed memory was allocated when we called `listAppend(list
 
 Putting it all together, after freeing 3, `listPrint` was somehow able to access the pointer to 3. This means that after freeing, we left a "dangling pointer" to the freed memory. The only pointer to 3 was the one from 2, and taking a look at `listDelete()`, we forgot to update 2 to point to something else.
 
+To help visualise things, this is what our list looks like after we deleted 3:
+```
+list -> 1 -> 2 -> ?
+```
+where `?` represents freed memory, where instead we want it to look like:
+```
+list -> 1 -> 2 -> X
+```
+
 ## The Fix
 
 Whenever we free memory, we need to make sure to update all pointers that pointed to this memory. Often we set the pointers to NULL, or update them to a new value.
@@ -158,6 +167,16 @@ Uh-oh, `fix1.c` still gives an error!
 ## The Problem 2
 
 Following the same process as above, this error happened because after freeing 1 we left another "dangling pointer". 1 was the head of the list, so the only pointer to it was the `list` variable in the main function. We need to make sure this is updated.
+
+
+To help visualise things, this is what our list looks like after we deleted 1:
+```
+list -> ?   2 -> X
+```
+where `?` represents freed memory, where instead we want it to look like:
+```
+list -> 2 -> X
+```
 
 ## The Fix 2
 
